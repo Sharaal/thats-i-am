@@ -1,0 +1,17 @@
+<form method="post">
+  <p>
+    ID: <%= user._id %><br/>
+    Name: <%= user.name %><br/>
+    Portrait: <input name="portrait" value="<%= user.portrait %>" /><br/>
+    Firstname: <input name="firstname" value="<%= user.firstname %>" /><br/>
+    Lastname: <input name="lastname" value="<%= user.lastname %>" /><br/>
+    Job: <input name="job" value="<%= user.job %>" /><br/>
+    Company: <input name="company" value="<%= user.company %>" /><br/>
+    Location: <input name="location" value="<%= user.location %>" /><br/>
+    Blockquote:<br/>
+    <textarea name="blockquote"><%= user.blockquote %></textarea><br/>
+    E-Mail: <input name="email" value="<%= user.email %>" /><br/>
+  </p>
+  <input type="submit" value="Save" />
+</form>
+<a href="/logout">Logout</a>

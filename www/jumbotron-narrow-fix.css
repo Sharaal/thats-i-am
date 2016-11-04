@@ -1,0 +1,18 @@
+/*
+ * Jumbotron Narrow Fix
+ */
+
+/* Let the header have some margin on mobile devices  */
+.header {
+  margin-bottom: 30px;
+}
+
+/* Let the footer have the same margin as the header independ of there is a row marketing or not */
+footer {
+  margin-top: 30px;
+}
+
+/* Let the footer the same padding as the header */
+.footer {
+  padding-top: 20px;
+}
