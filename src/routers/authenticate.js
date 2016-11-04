@@ -1,6 +1,7 @@
 const dbcrypt = require('dbcrypt');
 const ObjectId = require('mongodb').ObjectId;
 const passport = require('passport');
+const session = require('express-session');
 
 module.exports = async ({ db, ensureLoggedOut }) => {
   const authentications = db.collection('authentications');
@@ -35,7 +36,14 @@ module.exports = async ({ db, ensureLoggedOut }) => {
 
   router.use(require('body-parser').urlencoded({ extended: true }));
   router.use(require('cookie-parser')());
-  router.use(require('express-session')({ resave: false, saveUninitialized: false, secret: 'secret' }));
+  router.use(session({
+    resave: false,
+    saveUninitialized: false,
+    secret: 'secret',
+    store: new (require('connect-redis')(session))({
+      client: require('redis').createClient(process.env.REDIS_URL)
+    }),
+  }));
   router.use(passport.initialize());
   router.use(passport.session());
 
