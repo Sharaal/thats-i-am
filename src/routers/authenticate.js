@@ -41,7 +41,7 @@ module.exports = async ({ db, ensureLoggedOut }) => {
     saveUninitialized: false,
     secret: 'secret',
     store: new (require('connect-redis')(session))({
-      client: require('redis').createClient(process.env.REDIS_URL)
+      client: require('redis').createClient(process.env.REDIS_URL),
     }),
   }));
   router.use(passport.initialize());
