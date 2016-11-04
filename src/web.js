@@ -1,11 +1,11 @@
 (async () => {
   require('dotenv').config({ silent: true });
 
-  const db = await require('mongodb').MongoClient.connect(process.env.MONGOLAB_URI);
+  const db = await require('mongodb').MongoClient.connect(process.env.MONGODB_URI);
 
   const migrator = new (require('mongodb-migrations').Migrator)({
     collection: 'migrations',
-    url: process.env.MONGOLAB_URI,
+    url: process.env.MONGODB_URI,
   });
   await new Promise(resolve => migrator.runFromDir(require('path').join(__dirname, '/migrations'), resolve));
 
