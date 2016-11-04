@@ -17,7 +17,7 @@
   const app = express();
 
   app.use(await require('./routers/authenticate')({ db, ensureLoggedOut }));
-  app.use(await require('./routers/home')());
+  app.use(await require('./routers/home')({ db }));
   app.use(await require('./routers/profile')({ db, ensureLoggedIn }));
 
   app.use(express.static('www'));

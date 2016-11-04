@@ -3,3 +3,9 @@
 <% } else { %>
 	<p>Hello, <%= user.name %>. View your <a href="/profile">profile</a>.</p>
 <% } %>
+Users:
+<ul>
+	<% for (const user of users) { %>
+		<li><a href="/profile/<%= user.name %>"><%= user.name %></a></li>
+	<% } %>
+</ul>
